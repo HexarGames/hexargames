@@ -1,0 +1,62 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 4145575, 2021-08-11T08:11:03-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Gilroy-SemiBold by Radomir Tinkov
+ * URL: https://www.myfonts.com/fonts/radomir-tinkov/gilroy/semi-bold/
+ * 
+ * Webfont: Gilroy-Medium by Radomir Tinkov
+ * URL: https://www.myfonts.com/fonts/radomir-tinkov/gilroy/medium/
+ * 
+ * Webfont: Gilroy-Bold by Radomir Tinkov
+ * URL: https://www.myfonts.com/fonts/radomir-tinkov/gilroy/bold/
+ * 
+ * Webfont: Gilroy-Black by Radomir Tinkov
+ * URL: https://www.myfonts.com/fonts/radomir-tinkov/gilroy/black/
+ * 
+ * 
+ * Webfonts copyright: Copyright &amp;#x00A9; 2016 by Radomir Tinkov. All rights reserved.
+ * 
+ * © 2021 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("http://hello.myfonts.net/count/3f41a7");
+  
+@font-face {
+  font-family: "Gilroy";
+  src: url('webFonts/GilroyBlack/font.woff2') format('woff2'), url('webFonts/GilroyBlack/font.woff') format('woff');
+  font-weight: 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url('webFonts/GilroySemiBold/font.woff2') format('woff2'), url('webFonts/GilroySemiBold/font.woff') format('woff');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url('webFonts/GilroyMedium/font.woff2') format('woff2'), url('webFonts/GilroyMedium/font.woff') format('woff');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url('webFonts/GilroyBold/font.woff2') format('woff2'), url('webFonts/GilroyBold/font.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+    font-family: "Gilroy";
+    src: url('webFonts/GilroyExtraBold/font.woff2') format('woff2'), url('webFonts/GilroyExtraBold/font.woff') format('woff');
+    font-weight: 800;
+    font-display: swap;
+}
