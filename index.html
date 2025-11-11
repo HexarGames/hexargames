@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QK9WQHBMS0"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-QK9WQHBMS0');
+        gtag('config', 'G-QK9WQHBMS0');
     </script>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-    
+
     <title>Hexar Games</title>
     <meta name="description" content="We make high quality casual puzzle games that people love to play." />
     <meta name="keywords" content="">
@@ -54,128 +55,158 @@
     <meta name="msapplication-TileImage" content="Content/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <script type="text/javascript" charset="UTF-8" src="../cdn.cookie-script.com/s/5e9cad06c7087ff220447a141d869a94.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+        src="../cdn.cookie-script.com/s/5e9cad06c7087ff220447a141d869a94.js"></script>
 
 </head>
+
 <body>
 
-<div class="loading-animation" style="display: none;">
-    <img src="Content/images/loading.svg" />
-</div>
+    <div class="loading-animation" style="display: none;">
+        <img src="Content/images/loading.svg" />
+    </div>
 
-<script>
-    const loadingAnimation = document.querySelector('.loading-animation');
-    const loading = localStorage.getItem('loading');
+    <script>
+        const loadingAnimation = document.querySelector('.loading-animation');
+        const loading = localStorage.getItem('loading');
 
-    setTimeout(function () {
-        localStorage.setItem('loading', 'true');
-        loadingAnimation.style.display = "none";
-    }, 2000);
+        setTimeout(function () {
+            localStorage.setItem('loading', 'true');
+            loadingAnimation.style.display = "none";
+        }, 2000);
 
-    if (loading) {
-        loadingAnimation.style.display = "none";
-    } else {
-        loadingAnimation.style.display = "flex";
-    }
-</script>
+        if (loading) {
+            loadingAnimation.style.display = "none";
+        } else {
+            loadingAnimation.style.display = "flex";
+        }
+    </script>
 
-<header uk-sticky="cls-active: uk-navbar-sticky;">
-    
-    <nav class="uk-navbar-container uk-navbar" uk-navbar>
-        <a href="index.html" class="uk-navbar-item uk-logo uk-padding-remove"> 
-            <img src="Content/images/logo-white.svg" height="70" width="160"/>
-        </a>
+    <header uk-sticky="cls-active: uk-navbar-sticky;">
 
-        <div class="uk-navbar-item uk-hidden@m uk-padding-remove uk-position-center-right uk-position-z-index menu-button-container">
-            <a href="#" class="uk-link-reset uk-padding-small menu-button" uk-icon="icon: icn-menu" uk-toggle="target: .nav-overlay; animation: uk-animation-fade"></a>
-        </div>
+        <nav class="uk-navbar-container uk-navbar" uk-navbar>
+            <a href="index.html" class="uk-navbar-item uk-logo uk-padding-remove">
+                <img src="Content/images/logo-white.svg" height="70" width="160" />
+            </a>
 
-        <div class="nav-overlay uk-navbar-right">
-            <ul class="uk-navbar-nav uk-visible@m">
-                            <li><a href="index.html#about" uk-scroll="offset: 80;"><span>About Us</span></a></li>
-                            <li><a href="index.html#games" uk-scroll="offset: 80;"><span>Games</span></a></li>
+            <div
+                class="uk-navbar-item uk-hidden@m uk-padding-remove uk-position-center-right uk-position-z-index menu-button-container">
+                <a href="#" class="uk-link-reset uk-padding-small menu-button" uk-icon="icon: icn-menu"
+                    uk-toggle="target: .nav-overlay; animation: uk-animation-fade"></a>
+            </div>
 
-                        <!-- <li class="uk-flex-none "><a href="games/index.html"><span>Games</span></a></li>
+            <div class="nav-overlay uk-navbar-right">
+                <ul class="uk-navbar-nav uk-visible@m">
+                    <li><a href="index.html#about" uk-scroll="offset: 80;"><span>About Us</span></a></li>
+                    <li><a href="index.html#games" uk-scroll="offset: 80;"><span>Games</span></a></li>
+                    <li><a href="index.html#contact" uk-scroll="offset: 80;"><span>Contact Us</span></a></li>
+
+
+                    <!-- <li class="uk-flex-none "><a href="games/index.html"><span>Games</span></a></li>
                         <li class="uk-flex-none "><a href="careers/index.html"><span>Careers</span></a></li> -->
-            </ul>
-        </div>
-
-        <div class="nav-overlay uk-position-relative uk-width-1-1" hidden>
-            <div class="uk-overflow-auto">
-                <ul class="uk-navbar-nav uk-flex-nowrap">
-                                <li class="uk-flex-none"><a href="index.html#about" uk-scroll="offset: 70;">About Us</a></li>
-                                <li class="uk-flex-none"><a href="index.html#games" uk-scroll="offset: 70;">Games</a></li>
-
-                            <!-- <li class="uk-flex-none "><a href="games/index.html">Games</a></li>
-                            <li class="uk-flex-none "><a href="careers/index.html">Careers</a></li> -->
                 </ul>
             </div>
-            
-        </div>
-    </nav>
-</header>
-<div class="uk-sticky-placeholder" style="height: 70px; margin: 0px;"></div>
-<div class="menu-overlay uk-hidden@m"></div>
-<main>
 
-<section>
-    <div class="uk-position-relative uk-slider uk-slider-container" tabindex="-1" uk-slider="">
-        <ul class="uk-slider-items uk-child-width-1-1" style="transform: translate3d(0px, 0px, 0px);">
-            <li tabindex="-1" class="uk-active">
-                <img src="media/quwdbbrx/dream-banner-01.png"  class="uk-width-1-1">
-            </li>
-        </ul>
-        <div class="uk-position-bottom-center uk-margin-medium-bottom uk-visible@m">
-            <a href="#about" class="uk-icon-button uk-preserve uk-icon fotter-background"  uk-scroll="offset: 80;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 17L24.4137 15.4138L18.125 21.6912V8H15.875V21.6912L9.5975 15.4025L8 17L17 26L26 17Z" fill="#ffffff"></path></svg></a>
-        </div>
-    </div>
-</section>
-<!--Hexar Games-->
-<section id="about" class="uk-section uk-section-large">
-    <div class="uk-container uk-text-center">
-        <div class="uk-width-2-3@m uk-margin-auto uk-margin-remove-last-child">
-            <h1 class="uk-h2"><p>Hexar Games</p></h1>
-            <p>
-                <p><b style="color:#d61669;">Where entertainment meets innovation.</b><br /> Since our inception we've redefined the gaming landscape by seamlessly
-                <br />blending tech and creativity. At Hexar, we don't just create games; we craft <br />captivating experiences that
-                set new
-                standards for excellence. Join us in <br /> a world where every moment is infused with excitement and pure
-                entertainment.</p>
-        </div>
-    </div>
-</section>
-<!--Royal Mansion-->
-<section id="games" class="uk-section uk-section-small uk-section-muted uk-overflow-hidden">
-    <div class="uk-container">
-        <div class="uk-grid uk-grid-medium uk-flex-middle" uk-grid>
-            <div class="uk-width-1-3@m uk-margin-auto-left uk-text-center uk-flex-last@m">
-                <div class="phone-container">
-                    <img src="media/v5llhxxe/royal-mansion.png" alt="Iphone12 Screen" width="286" />
+            <div class="nav-overlay uk-position-relative uk-width-1-1" hidden>
+                <div class="uk-overflow-auto">
+                    <ul class="uk-navbar-nav uk-flex-nowrap">
+                        <li class="uk-flex-none"><a href="index.html#about" uk-scroll="offset: 70;">About Us</a></li>
+                        <li class="uk-flex-none"><a href="index.html#games" uk-scroll="offset: 70;">Games</a></li>
+                        <li class="uk-flex-none"><a href="index.html#contact" uk-scroll="offset: 70;">Contact Us</a>
+                        </li>
+
+                        <!-- <li class="uk-flex-none "><a href="games/index.html">Games</a></li>
+                            <li class="uk-flex-none "><a href="careers/index.html">Careers</a></li> -->
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <div class="uk-sticky-placeholder" style="height: 70px; margin: 0px;"></div>
+    <div class="menu-overlay uk-hidden@m"></div>
+    <main>
+
+        <section>
+            <div class="uk-position-relative uk-slider uk-slider-container" tabindex="-1" uk-slider="">
+                <ul class="uk-slider-items uk-child-width-1-1" style="transform: translate3d(0px, 0px, 0px);">
+                    <li tabindex="-1" class="uk-active">
+                        <img src="media/quwdbbrx/dream-banner-01.png" class="uk-width-1-1">
+                    </li>
+                </ul>
+                <div class="uk-position-bottom-center uk-margin-medium-bottom uk-visible@m">
+                    <a href="#about" class="uk-icon-button uk-preserve uk-icon fotter-background"
+                        uk-scroll="offset: 80;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M26 17L24.4137 15.4138L18.125 21.6912V8H15.875V21.6912L9.5975 15.4025L8 17L17 26L26 17Z"
+                                fill="#ffffff"></path>
+                        </svg></a>
                 </div>
             </div>
-
-            <div class="uk-width-2-5@m uk-text-center uk-text-left@m">
-                <h2><p>Royal Mansion!</p></h2>
-                <p><p class="p1">Embark on a royal journey with <b style="color:#d61669;">Royal Mansion</b>, a free-to-play match-3 marvel! Join King Robert, conquer
-                challenges, and
-                revive the Royal mansion's former glory. With wonderfull levels and captivating narratives, this enchanting game
-                promises a regal adventure. Shape the castle's destiny with every move! 🏰🔮 <b style="color:#d61669;">#RoyalMansion #Match3Magic</b></p></p>
-
-                <!-- <a href="games/index.html" class="uk-button uk-button-link"><span>More</span><span uk-icon="icon: icn-chevron-right;"></span></a> -->
-                
-                <div class="uk-margin-medium uk-width-medium-max uk-margin-auto uk-margin-remove-left@m">
-                    <div class="uk-grid uk-grid-small uk-child-width-1-2 uk-flex-center uk-flex-left@m uk-flex-middle" uk-grid>
-                        <div>
-                            <a href="https://play.google.com/store/apps/details?id=com.hexargames.royalmansion&amp;hl=en&amp;gl=US" target="_blank">
-                                <img src="Content/images/googleplay.svg" alt="" />
-                            </a>
+        </section>
+        <!--Hexar Games-->
+        <section id="about" class="uk-section uk-section-large">
+            <div class="uk-container uk-text-center">
+                <div class="uk-width-2-3@m uk-margin-auto uk-margin-remove-last-child">
+                    <h1 class="uk-h2">
+                        <p>Hexar Games</p>
+                    </h1>
+                    <p>
+                    <p><b style="color:#d61669;">Where entertainment meets innovation.</b><br /> Since our inception
+                        we've redefined the gaming landscape by seamlessly
+                        <br />blending tech and creativity. At Hexar, we don't just create games; we craft
+                        <br />captivating experiences that
+                        set new
+                        standards for excellence. Join us in <br /> a world where every moment is infused with
+                        excitement and pure
+                        entertainment.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!--Royal Mansion-->
+        <section id="games" class="uk-section uk-section-small uk-section-muted uk-overflow-hidden">
+            <div class="uk-container">
+                <div class="uk-grid uk-grid-medium uk-flex-middle" uk-grid>
+                    <div class="uk-width-1-3@m uk-margin-auto-left uk-text-center uk-flex-last@m">
+                        <div class="phone-container">
+                            <img src="media/v5llhxxe/royal-mansion.png" alt="Iphone12 Screen" width="286" />
                         </div>
-                        <div>
-                            <a href="https://apps.apple.com/us/app/royal-mansion-match-design/id6475692957" target="_blank">
-                                <img src="Content/images/appstore.svg" alt="" />
-                            </a>
-                        </div>
-                            <!-- <div>
+                    </div>
+
+                    <div class="uk-width-2-5@m uk-text-center uk-text-left@m">
+                        <h2>
+                            <p>Royal Mansion!</p>
+                        </h2>
+                        <p>
+                        <p class="p1">Embark on a royal journey with <b style="color:#d61669;">Royal Mansion</b>, a
+                            free-to-play match-3 marvel! Join King Robert, conquer
+                            challenges, and
+                            revive the Royal mansion's former glory. With wonderfull levels and captivating narratives,
+                            this enchanting game
+                            promises a regal adventure. Shape the castle's destiny with every move! 🏰🔮 <b
+                                style="color:#d61669;">#RoyalMansion #Match3Magic</b></p>
+                        </p>
+
+                        <!-- <a href="games/index.html" class="uk-button uk-button-link"><span>More</span><span uk-icon="icon: icn-chevron-right;"></span></a> -->
+
+                        <div class="uk-margin-medium uk-width-medium-max uk-margin-auto uk-margin-remove-left@m">
+                            <div class="uk-grid uk-grid-small uk-child-width-1-2 uk-flex-center uk-flex-left@m uk-flex-middle"
+                                uk-grid>
+                                <div>
+                                    <a href="https://play.google.com/store/apps/details?id=com.hexargames.royalmansion&amp;hl=en&amp;gl=US"
+                                        target="_blank">
+                                        <img src="Content/images/googleplay.svg" alt="" />
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="https://apps.apple.com/us/app/royal-mansion-match-design/id6475692957"
+                                        target="_blank">
+                                        <img src="Content/images/appstore.svg" alt="" />
+                                    </a>
+                                </div>
+                                <!-- <div>
                                 <a href="https://galaxystore.samsung.com/detail/com.dreamgames.royalmatch.samsung" target="_blank">
                                     <img src="Content/images/galaxy-store.png" width="180" />
                                 </a>
@@ -186,50 +217,56 @@
                                     <img src="Content/images/app-gallery.png" alt="" width="180" />
                                 </a>
                             </div> -->
-                        
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!--Super Match Factory-->
-<section class="uk-section uk-section-small uk-overflow-hidden">
-    <div class="uk-container">
-        <div class="uk-grid uk-grid-medium uk-flex-middle" uk-grid>
+        <!--Super Match Factory-->
+        <section class="uk-section uk-section-small uk-overflow-hidden">
+            <div class="uk-container">
+                <div class="uk-grid uk-grid-medium uk-flex-middle" uk-grid>
 
-            <div class="uk-width-1-3@m uk-margin-auto-right uk-text-center uk-flex-left@m uk-first-column">
-                <div class="phone-container">
-                    <img src="media/v5llhxxe/super-match-factory.png" alt="Iphone12 Screen" width="286" />
-                </div>
-            </div>
-
-        <div class="uk-width-2-5@m uk-text-center uk-text-left@m">
-            <h2>
-                <p>Super Match Factory!</p>
-            </h2>
-            <p>
-            <p class="p1">Fire up your puzzle-solving skills in <b style="color:#d61669;">Super Match Factory</b>, Each level tests your strategy with 
-                unique objectives and time limits. Transform a rundown factory into a state-of-the-art facility and become the industry tycoon.
-                It’s time to gear up and transform your factory! 🧠🔠 <b style="color:#d61669;">#SuperMatchFactory #MatchToManufacture</b></p>
-            </p>
-        
-            <!-- <a href="games/index.html" class="uk-button uk-button-link"><span>More</span><span uk-icon="icon: icn-chevron-right;"></span></a> -->
-        
-             <div class="uk-margin-medium uk-width-medium-max uk-margin-auto uk-margin-remove-left@m">
-                    <div class="uk-grid uk-grid-small uk-child-width-1-2 uk-flex-center uk-flex-left@m uk-flex-middle" uk-grid>
-                        <div>
-                            <a href="https://play.google.com/store/apps/details?id=com.hexargames.supermatchfactory" target="_blank">
-                                <img src="Content/images/googleplay.svg" alt="" />
-                            </a>
+                    <div class="uk-width-1-3@m uk-margin-auto-right uk-text-center uk-flex-left@m uk-first-column">
+                        <div class="phone-container">
+                            <img src="media/v5llhxxe/super-match-factory.png" alt="Iphone12 Screen" width="286" />
                         </div>
-                        <div>
-                            <a href="https://apps.apple.com/us/app/super-match-factory/id6504266231" target="_blank">
-                                <img src="Content/images/appstore.svg" alt="" />
-                            </a>
-                        </div>
-                            <!-- <div>
+                    </div>
+
+                    <div class="uk-width-2-5@m uk-text-center uk-text-left@m">
+                        <h2>
+                            <p>Super Match Factory!</p>
+                        </h2>
+                        <p>
+                        <p class="p1">Fire up your puzzle-solving skills in <b style="color:#d61669;">Super Match
+                                Factory</b>, Each level tests your strategy with
+                            unique objectives and time limits. Transform a rundown factory into a state-of-the-art
+                            facility and become the industry tycoon.
+                            It’s time to gear up and transform your factory! 🧠🔠 <b
+                                style="color:#d61669;">#SuperMatchFactory #MatchToManufacture</b></p>
+                        </p>
+
+                        <!-- <a href="games/index.html" class="uk-button uk-button-link"><span>More</span><span uk-icon="icon: icn-chevron-right;"></span></a> -->
+
+                        <div class="uk-margin-medium uk-width-medium-max uk-margin-auto uk-margin-remove-left@m">
+                            <div class="uk-grid uk-grid-small uk-child-width-1-2 uk-flex-center uk-flex-left@m uk-flex-middle"
+                                uk-grid>
+                                <div>
+                                    <a href="https://play.google.com/store/apps/details?id=com.hexargames.supermatchfactory"
+                                        target="_blank">
+                                        <img src="Content/images/googleplay.svg" alt="" />
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="https://apps.apple.com/us/app/super-match-factory/id6504266231"
+                                        target="_blank">
+                                        <img src="Content/images/appstore.svg" alt="" />
+                                    </a>
+                                </div>
+                                <!-- <div>
                                 <a href="https://galaxystore.samsung.com/detail/com.dreamgames.royalmatch.samsung" target="_blank">
                                     <img src="Content/images/galaxy-store.png" width="180" />
                                 </a>
@@ -240,46 +277,56 @@
                                     <img src="Content/images/app-gallery.png" alt="" width="180" />
                                 </a>
                             </div> -->
-                        
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-        </div>
-        </div>
-    </div>
-</section>
-
-<!--Wordplay-->
-<section class="uk-section uk-section-small uk-section-muted uk-overflow-hidden">
-    <div class="uk-container">
-        <div class="uk-grid uk-grid-medium uk-flex-middle" uk-grid>
-            <div class="uk-width-1-3@m uk-margin-auto-left uk-text-center uk-flex-last@m">
-                <div class="phone-container">
-                    <img src="media/v5llhxxe/word-play.png" alt="Iphone12 Screen" width="286" />
-                </div>
             </div>
+        </section>
 
-            <div class="uk-width-2-5@m uk-text-center uk-text-left@m">
-                <h2><p>Wordplay!</p></h2>
-                <p><p class="p1">Dive into the addictive fun of <b style="color:#d61669;">WordPlay</b>, the word game everyone's talking about! Easy at first, it ramps up
-                quickly—can
-                you beat it? This modern blend of word searching and crosswords ensures non-stop brain-challenging excitement. Say
-                goodbye to dull moments and hello to endless word puzzle thrills! 🧠🔠 <b style="color:#d61669;">#WordPlay #BrainTeasers</b></p></p>
+        <!--Wordplay-->
+        <section class="uk-section uk-section-small uk-section-muted uk-overflow-hidden">
+            <div class="uk-container">
+                <div class="uk-grid uk-grid-medium uk-flex-middle" uk-grid>
+                    <div class="uk-width-1-3@m uk-margin-auto-left uk-text-center uk-flex-last@m">
+                        <div class="phone-container">
+                            <img src="media/v5llhxxe/word-play.png" alt="Iphone12 Screen" width="286" />
+                        </div>
+                    </div>
 
-                <!-- <a href="games/index.html" class="uk-button uk-button-link"><span>More</span><span uk-icon="icon: icn-chevron-right;"></span></a> -->
-                
-                <div class="uk-margin-medium uk-width-medium-max uk-margin-auto uk-margin-remove-left@m">
-                    <div class="uk-grid uk-grid-small uk-child-width-1-2 uk-flex-center uk-flex-left@m uk-flex-middle" uk-grid>
-                        <div>
-                            <a href="https://play.google.com/store/apps/details?id=com.madfox.games.wordplay&amp;hl=en&amp;gl=US" target="_blank">
-                                <img src="Content/images/googleplay.svg" alt="" />
-                            </a>
-                        </div>
-                        <div>
-                            <a href="https://apps.apple.com/us/app/wordplay-crossword-puzzles/id6476651753" target="_blank">
-                                <img src="Content/images/appstore.svg" alt="" />
-                            </a>
-                        </div>
-                            <!-- <div>
+                    <div class="uk-width-2-5@m uk-text-center uk-text-left@m">
+                        <h2>
+                            <p>Wordplay!</p>
+                        </h2>
+                        <p>
+                        <p class="p1">Dive into the addictive fun of <b style="color:#d61669;">WordPlay</b>, the word
+                            game everyone's talking about! Easy at first, it ramps up
+                            quickly—can
+                            you beat it? This modern blend of word searching and crosswords ensures non-stop
+                            brain-challenging excitement. Say
+                            goodbye to dull moments and hello to endless word puzzle thrills! 🧠🔠 <b
+                                style="color:#d61669;">#WordPlay #BrainTeasers</b></p>
+                        </p>
+
+                        <!-- <a href="games/index.html" class="uk-button uk-button-link"><span>More</span><span uk-icon="icon: icn-chevron-right;"></span></a> -->
+
+                        <div class="uk-margin-medium uk-width-medium-max uk-margin-auto uk-margin-remove-left@m">
+                            <div class="uk-grid uk-grid-small uk-child-width-1-2 uk-flex-center uk-flex-left@m uk-flex-middle"
+                                uk-grid>
+                                <div>
+                                    <a href="https://play.google.com/store/apps/details?id=com.madfox.games.wordplay&amp;hl=en&amp;gl=US"
+                                        target="_blank">
+                                        <img src="Content/images/googleplay.svg" alt="" />
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="https://apps.apple.com/us/app/wordplay-crossword-puzzles/id6476651753"
+                                        target="_blank">
+                                        <img src="Content/images/appstore.svg" alt="" />
+                                    </a>
+                                </div>
+                                <!-- <div>
                                 <a href="https://galaxystore.samsung.com/detail/com.dreamgames.royalmatch.samsung" target="_blank">
                                     <img src="Content/images/galaxy-store.png" width="180" />
                                 </a>
@@ -290,46 +337,55 @@
                                     <img src="Content/images/app-gallery.png" alt="" width="180" />
                                 </a>
                             </div> -->
-                        
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!--Tropic Match-->
-<section class="uk-section uk-section-small uk-overflow-hidden">
-    <div class="uk-container">
-        <div class="uk-grid uk-grid-medium uk-flex-middle" uk-grid>
-            <div class="uk-width-1-3@m uk-margin-auto-right uk-text-center uk-flex-left@m uk-first-column">
-                <div class="phone-container">
-                    <img src="media/v5llhxxe/tropic-match.png" alt="Iphone12 Screen" width="286" />
-                </div>
-            </div>
-
-            <div class="uk-width-2-5@m uk-text-center uk-text-left@m">
-                <h2><p>Tropic Match!</p></h2>
-                <p><p class="p1">Set sail for adventure in <b style="color:#d61669;">Tropic Match</b> a tropical-themed free-to-play match-3 game that takes you 
-                    on an island adventure like no other! Swipe and match exotic elements, each brimming with colorful challenges and juicy rewards. uncover 
-                    hidden treasures along the way. Transform your islands into a tropical oasis! 🏝️🍹 <b style="color:#d61669;">#TropicMatch 
-                    #IslandAdventure</b></p></p>
-
-                <!-- <a href="games/index.html" class="uk-button uk-button-link"><span>More</span><span uk-icon="icon: icn-chevron-right;"></span></a> -->
-                
-                <div class="uk-margin-medium uk-width-medium-max uk-margin-auto uk-margin-remove-left@m">
-                    <div class="uk-grid uk-grid-small uk-child-width-1-2 uk-flex-center uk-flex-left@m uk-flex-middle" uk-grid>
-                        <div>
-                            <a href="https://play.google.com/store/apps/details?id=com.hexargames.tropicmatch" target="_blank">
-                                <img src="Content/images/googleplay.svg" alt="" />
-                            </a>
+        <!--Tropic Match-->
+        <section class="uk-section uk-section-small uk-overflow-hidden">
+            <div class="uk-container">
+                <div class="uk-grid uk-grid-medium uk-flex-middle" uk-grid>
+                    <div class="uk-width-1-3@m uk-margin-auto-right uk-text-center uk-flex-left@m uk-first-column">
+                        <div class="phone-container">
+                            <img src="media/v5llhxxe/tropic-match.png" alt="Iphone12 Screen" width="286" />
                         </div>
-                        <div>
-                            <a href="https://apps.apple.com/us/app/tropic-match/id6504266297" target="_blank">
-                                <img src="Content/images/appstore.svg" alt="" />
-                            </a>
-                        </div>
-                            <!-- <div>
+                    </div>
+
+                    <div class="uk-width-2-5@m uk-text-center uk-text-left@m">
+                        <h2>
+                            <p>Tropic Match!</p>
+                        </h2>
+                        <p>
+                        <p class="p1">Set sail for adventure in <b style="color:#d61669;">Tropic Match</b> a
+                            tropical-themed free-to-play match-3 game that takes you
+                            on an island adventure like no other! Swipe and match exotic elements, each brimming with
+                            colorful challenges and juicy rewards. uncover
+                            hidden treasures along the way. Transform your islands into a tropical oasis! 🏝️🍹 <b
+                                style="color:#d61669;">#TropicMatch
+                                #IslandAdventure</b></p>
+                        </p>
+
+                        <!-- <a href="games/index.html" class="uk-button uk-button-link"><span>More</span><span uk-icon="icon: icn-chevron-right;"></span></a> -->
+
+                        <div class="uk-margin-medium uk-width-medium-max uk-margin-auto uk-margin-remove-left@m">
+                            <div class="uk-grid uk-grid-small uk-child-width-1-2 uk-flex-center uk-flex-left@m uk-flex-middle"
+                                uk-grid>
+                                <div>
+                                    <a href="https://play.google.com/store/apps/details?id=com.hexargames.tropicmatch"
+                                        target="_blank">
+                                        <img src="Content/images/googleplay.svg" alt="" />
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="https://apps.apple.com/us/app/tropic-match/id6504266297" target="_blank">
+                                        <img src="Content/images/appstore.svg" alt="" />
+                                    </a>
+                                </div>
+                                <!-- <div>
                                 <a href="https://galaxystore.samsung.com/detail/com.dreamgames.royalmatch.samsung" target="_blank">
                                     <img src="Content/images/galaxy-store.png" width="180" />
                                 </a>
@@ -340,43 +396,59 @@
                                     <img src="Content/images/app-gallery.png" alt="" width="180" />
                                 </a>
                             </div> -->
-                        
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- <section class="uk-section uk-section-small uk-padding-remove-bottom@m">
-    <div class="uk-container">
-        <div class="uk-grid uk-grid-medium uk-flex-middle" uk-grid>
-            <div class="uk-width-1-2@m">
-                <img src="media/2khdw415/main-careers-1.png" alt="Main Careers 1" width="526" />
-            </div>
+        <!-- Contact Us -->
+        <section id="contact" class="uk-section uk-section-small uk-section-muted contact-section">
+            <div class="uk-container">
+                <div class="contact-inner">
+                    <div class="uk-grid uk-grid-medium uk-flex-middle uk-flex-center" uk-grid>
+                        <div class="uk-width-1-2@m uk-width-1-1@s uk-text-center contact-details">
+                            <h2>Contact Us</h2>
+                            <p>Have a question or business inquiry? Reach out to us and we'll get back to you.</p>
+                            <p><strong>Email</strong>: <a href="mailto:info@hexargames.com">info@hexargames.com</a></p>
+                            <p><strong>Follow</strong>:
+                                <a href="https://www.facebook.com/hexargames" target="_blank">Facebook</a> ·
+                                <a href="https://www.instagram.com/hexargames" target="_blank">Instagram</a>
+                            </p>
 
-            <div class="uk-width-1-3@m uk-margin-auto-left uk-text-center uk-text-left@m">
-                <h2><p>Careers</p></h2>
-                <div class="uk-margin-remove-last-child">
-                    <p><p>Together, we will create high-quality mobile games that will be played for years.</p></p>
+                            <div class="uk-margin-top uk-text-small address-block">
+                                <h4>Address</h4>
+                                <address>
+                                    Floor No.: Mavdi R.S. No.71P, Plot no. 32 to 34<br>
+                                    Building No./Flat No.: Possible Triangle<br>
+                                    Name Of Premises/Building: Office No. 302<br>
+                                    Road/Street: Mavdi Bypass Road<br>
+                                    Locality/Sub Locality: Mavdi<br>
+                                    City/Town/Village: Rajkot<br>
+                                    District: Rajkot<br>
+                                    State: Gujarat<br>
+                                    PIN Code: 360004
+                                </address>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <a href="careers/index.html" class="uk-button uk-button-primary uk-margin-30"><p style="margin-bottom: 0px;">See All Positions</p></a>
             </div>
-        </div>
-    </div>
-</section> -->
+        </section>
     </main>
 
-    
-<style>
-    .terms {
-        color: rgba(255, 255, 255, 0.80) !important;
-        font-size: 13px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        opacity: 1;
-    }
+
+    <style>
+        .terms {
+            color: rgba(255, 255, 255, 0.80) !important;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            opacity: 1;
+        }
 
         .terms:hover {
             opacity: 1;
@@ -384,7 +456,7 @@
             text-decoration: none;
         }
 
-        @media(min-width:960px){
+        @media(min-width:960px) {
             .terms:hover {
                 opacity: .5;
             }
@@ -396,82 +468,186 @@
             text-decoration: none;
         }
 
-    .terms-links a {
-        font-size: 13px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        color: #F5F5F5;
-        text-decoration: none;
-    }
+        .terms-links a {
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            color: #F5F5F5;
+            text-decoration: none;
+        }
 
         .terms-links a:hover {
             opacity: .8;
         }
-</style>
-<footer class="uk-section uk-section-small uk-section-primary uk-text-center uk-text-left@m fotter-background">
-    <div class="uk-container">
-        <div class="uk-grid uk-grid-medium" uk-grid>
-            <div class="uk-width-1-3@m">
-                <a href="index.html">
-                    <img src="Content/images/logo-white.svg" style="max-width: 250px;">
-                </a>
 
-                <div class="uk-margin uk-text-14 uk-visible@m uk-position-relative uk-position-z-index">
-                    <a href="mailto:info@hexargames.com">info@hexargames.com</a>
+        /* Contact & general responsiveness improvements */
+        .contact-section {
+            background: #fbfbfc;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .contact-details h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .contact-details {
+            text-align: center;
+        }
+
+        .contact-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .contact-form-wrap {
+            text-align: center;
+        }
+
+        .address-block address {
+            font-style: normal;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .contact-form-wrap .uk-input,
+        .contact-form-wrap .uk-textarea {
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        /* Make header logo responsive */
+        .uk-navbar-item.uk-logo img {
+            max-width: 160px;
+            height: auto;
+            display: block;
+        }
+
+        /* Ensure images scale nicely on small screens */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Phone mockups */
+        .phone-container img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* App store images */
+        .uk-grid .uk-child-width-1-2 img {
+            max-width: 160px;
+            height: auto;
+            display: inline-block;
+        }
+
+        /* Footer background & text contrast */
+        .fotter-background {
+            background: #0b1220;
+            color: #fff;
+        }
+
+        .fotter-background a {
+            color: #f5f5f5;
+        }
+
+        @media (max-width: 640px) {
+            .contact-details {
+                margin-bottom: 20px;
+            }
+
+            .contact-form-wrap .uk-input,
+            .contact-form-wrap .uk-textarea {
+                font-size: 15px;
+            }
+
+            .uk-navbar-item.uk-logo img {
+                max-width: 140px;
+            }
+        }
+    </style>
+    <footer class="uk-section uk-section-small uk-section-primary uk-text-center uk-text-left@m fotter-background">
+        <div class="uk-container">
+            <div class="uk-grid uk-grid-medium" uk-grid>
+                <div class="uk-width-1-3@m">
+                    <a href="index.html">
+                        <img src="Content/images/logo-white.svg" style="max-width: 250px;">
+                    </a>
+
+                    <div class="uk-margin uk-text-14 uk-visible@m uk-position-relative uk-position-z-index">
+                        <a href="mailto:info@hexargames.com">info@hexargames.com</a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="uk-width-1-3@m">
-                <ul class="uk-subnav uk-flex-center">
+                <div class="uk-width-1-3@m">
+                    <ul class="uk-subnav uk-flex-center">
                         <li><a href="index.html#about">About Us</a></li>
                         <li><a href="index.html#games">Games</a></li>
                         <li><a href="mailto:info@hexargames.com">Contact Us</a></li>
                         <!-- <li><a href="games/index.html">Games</a></li> -->
                         <!-- <li><a href="careers/index.html">Careers</a></li> -->
-                </ul>
-            </div>
-
-            <div class="uk-width-1-3@m">
-                <ul class="uk-iconnav uk-flex-center uk-flex-right@m">
-                        <li><a href="https://www.facebook.com/hexargames" uk-icon="icon: facebook; ratio: 1.6;" target="_blank"></a></li>
-                        <li><a href="https://www.instagram.com/hexargames" uk-icon="icon: instagram; ratio: 1.6;" target="_blank"></a></li>
-                        <li><a href="https://twitter.com/hexargames" uk-icon="icon: twitter; ratio: 1.6;" target="_blank"></a></li>
-                        <li><a href="https://www.linkedin.com/company/hexargamestudio" uk-icon="icon: linkedin; ratio: 1.6;" target="_blank"></a></li>
-                </ul>
-
-                <div class="uk-margin-30 uk-margin-medium-bottom uk-text-small uk-hidden@m">
-                    <a href="mailto:info@hexargames.com">info@hexargames.com</a>
+                    </ul>
                 </div>
-            </div>
 
-            <div class="uk-width-1-1 uk-text-center uk-flex uk-flex-column uk-flex-middle uk-margin-remove">
-                <div class="uk-child-width-auto uk-grid-small terms-links uk-invisible uk-margin-small-bottom" uk-grid id="toggle-terms">
+                <div class="uk-width-1-3@m">
+                    <ul class="uk-iconnav uk-flex-center uk-flex-right@m">
+                        <li><a href="https://www.facebook.com/hexargames" uk-icon="icon: facebook; ratio: 1.6;"
+                                target="_blank"></a></li>
+                        <li><a href="https://www.instagram.com/hexargames" uk-icon="icon: instagram; ratio: 1.6;"
+                                target="_blank"></a></li>
+                        <li><a href="https://twitter.com/hexargames" uk-icon="icon: twitter; ratio: 1.6;"
+                                target="_blank"></a></li>
+                        <li><a href="https://www.linkedin.com/company/hexargamestudio"
+                                uk-icon="icon: linkedin; ratio: 1.6;" target="_blank"></a></li>
+                    </ul>
+
+                    <div class="uk-margin-30 uk-margin-medium-bottom uk-text-small uk-hidden@m">
+                        <a href="mailto:info@hexargames.com">info@hexargames.com</a>
+                    </div>
+                </div>
+
+                <div class="uk-width-1-1 uk-text-center uk-flex uk-flex-column uk-flex-middle uk-margin-remove">
+                    <div class="uk-child-width-auto uk-grid-small terms-links uk-invisible uk-margin-small-bottom"
+                        uk-grid id="toggle-terms">
                         <a href="en/terms">Terms of Service</a>
-                        <a href="en/privacy">Privacy Policy</a>   
+                        <a href="en/privacy">Privacy Policy</a>
 
                         <!-- <a href="en/terms/index.html">Terms of Service</a>
                         <a href="en/privacy/index.html">Privacy Policy</a>
                         <a href="s172-statement/index.html">S172 Statement</a> -->
+                    </div>
+                    <a href="#" class="terms uk-margin-small-bottom"
+                        uk-toggle="target: #toggle-terms; cls: uk-invisible;">Terms &amp; Privacy</a>
+                    <small class="uk-display-block" id="copyright-year">Copyright 2025 - Hexar Games LLP</small>
+
                 </div>
-                <a href="#" class="terms uk-margin-small-bottom" uk-toggle="target: #toggle-terms; cls: uk-invisible;">Terms &amp; Privacy</a>
-                <small class="uk-display-block" id="copyright-year">Copyright 2025 - Hexar Games LLP</small>
-                
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<script>
-    const currentYear = new Date().getFullYear();
-    const copyrightYearElement = document.getElementById('copyright-year');
-    copyrightYearElement.textContent = `Copyright ${currentYear} - Hexar Games LLP`;
-</script>
+    <script>
+        const currentYear = new Date().getFullYear();
+        const copyrightYearElement = document.getElementById('copyright-year');
+        copyrightYearElement.textContent = `Copyright ${currentYear} - Hexar Games LLP`;
+    </script>
+
     <script src="Content/uikit/dist/js/uikit.min.js"></script>
     <script src="Content/uikit/dist/js/uikit-icons.min.js"></script>
-    <script src="../code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="../cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="../cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js" integrity="sha512-XZEy8UQ9rngkxQVugAdOuBRDmJ5N4vCuNXCh8KlniZgDKTvf7zl75QBtaVG1lEhMFe2a2DuA22nZYY+qsI2/xA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+    <script src="../cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+        integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"
+        integrity="sha512-XZEy8UQ9rngkxQVugAdOuBRDmJ5N4vCuNXCh8KlniZgDKTvf7zl75QBtaVG1lEhMFe2a2DuA22nZYY+qsI2/xA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="Content/js/theme.js"></script>
     <script>
         $("#career-form").validate({
@@ -490,7 +666,7 @@
                 },
             },
             messages: {
-                
+
                 UploadCV: {
                     maxFileSize: 'The file size should be a maximum of 20mb.',
                 }
@@ -510,7 +686,7 @@
                     success: function () {
 
                         window.location = 'thank-you/index.html';
-                        
+
                     },
                     error: function (request, status, error) {
 
@@ -531,9 +707,9 @@
                         }
                         else {
                             UIkit.notification({
-                            message:
-                                '<span class=\'uk-text-danger uk-margin-small-right\' uk-icon=\'icon: warning\'></span>' + 'An error occurred while submitting your form. Please try again later.', status: 'danger'
-                        });
+                                message:
+                                    '<span class=\'uk-text-danger uk-margin-small-right\' uk-icon=\'icon: warning\'></span>' + 'An error occurred while submitting your form. Please try again later.', status: 'danger'
+                            });
                         }
                     }
                 });
@@ -566,4 +742,5 @@
     </script>
 
 </body>
+
 </html>
