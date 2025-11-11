@@ -1,0 +1,2 @@
+# Enable environment variable for PHP
+SetEnv FB_APP_SECRET d67c3772d442ad286b47a94e8ac4d70b
