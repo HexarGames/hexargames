@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/helpers.php';
+
 // Return JSON if requested, otherwise HTML for humans
 function wants_json(): bool {
   if (isset($_GET['format']) && $_GET['format'] === 'json') return true;
@@ -13,6 +15,8 @@ try {
   mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
   require_once __DIR__ . '/db.php';
 
+  $appsConfig = fb_apps_config();
+
   $id = $_GET['id'] ?? '';
   if ($id === '' || !preg_match('/^[a-f0-9]{8,64}$/i', $id)) {
     if (wants_json()) {
@@ -24,9 +28,60 @@ try {
     }
   }
 
+  $appSlugParam = $_GET['app'] ?? null;
+  $appFilterId = null;
+  $appFilterName = null;
+  if ($appSlugParam !== null && $appSlugParam !== '') {
+    $appFilterId = fb_app_id_from_slug($appSlugParam);
+    if ($appFilterId !== null) {
+      $cfg = $appsConfig[$appFilterId] ?? null;
+      if (is_array($cfg)) {
+        $appFilterName = $cfg['name'] ?? ($cfg['slug'] ?? $appFilterId);
+      }
+    } else {
+      $appFilterName = $appSlugParam;
+    }
+  }
+
+  $hasAppIdColumn = false;
+  $res = $conn->query("SHOW COLUMNS FROM deletion_requests LIKE 'app_id'");
+  if ($res && $res->num_rows > 0) $hasAppIdColumn = true;
+  if ($res instanceof mysqli_result) $res->free();
+
+  $hasAppNameColumn = false;
+  $res = $conn->query("SHOW COLUMNS FROM deletion_requests LIKE 'app_name'");
+  if ($res && $res->num_rows > 0) $hasAppNameColumn = true;
+  if ($res instanceof mysqli_result) $res->free();
+
   // ---- First query: only guaranteed columns (works on any schema)
-  $stmt = $conn->prepare("SELECT user_id, status FROM deletion_requests WHERE confirmation_code = ? LIMIT 1");
-  $stmt->bind_param("s", $id);
+  if ($hasAppIdColumn && $hasAppNameColumn) {
+    if ($appFilterId !== null) {
+      $stmt = $conn->prepare("SELECT user_id, status, app_id, app_name FROM deletion_requests WHERE confirmation_code = ? AND app_id = ? LIMIT 1");
+      $stmt->bind_param("ss", $id, $appFilterId);
+    } else {
+      $stmt = $conn->prepare("SELECT user_id, status, app_id, app_name FROM deletion_requests WHERE confirmation_code = ? LIMIT 1");
+      $stmt->bind_param("s", $id);
+    }
+  } elseif ($hasAppIdColumn) {
+    if ($appFilterId !== null) {
+      $stmt = $conn->prepare("SELECT user_id, status, app_id FROM deletion_requests WHERE confirmation_code = ? AND app_id = ? LIMIT 1");
+      $stmt->bind_param("ss", $id, $appFilterId);
+    } else {
+      $stmt = $conn->prepare("SELECT user_id, status, app_id FROM deletion_requests WHERE confirmation_code = ? LIMIT 1");
+      $stmt->bind_param("s", $id);
+    }
+  } elseif ($hasAppNameColumn) {
+    if ($appFilterName !== null) {
+      $stmt = $conn->prepare("SELECT user_id, status, app_name FROM deletion_requests WHERE confirmation_code = ? AND app_name = ? LIMIT 1");
+      $stmt->bind_param("ss", $id, $appFilterName);
+    } else {
+      $stmt = $conn->prepare("SELECT user_id, status, app_name FROM deletion_requests WHERE confirmation_code = ? LIMIT 1");
+      $stmt->bind_param("s", $id);
+    }
+  } else {
+    $stmt = $conn->prepare("SELECT user_id, status FROM deletion_requests WHERE confirmation_code = ? LIMIT 1");
+    $stmt->bind_param("s", $id);
+  }
   $stmt->execute();
   $stmt->store_result();
 
@@ -40,13 +95,35 @@ try {
     }
   }
 
-  $stmt->bind_result($user_id, $status);
+  if ($hasAppIdColumn && $hasAppNameColumn) {
+    $stmt->bind_result($user_id, $status, $appIdValue, $appNameValue);
+  } elseif ($hasAppIdColumn) {
+    $stmt->bind_result($user_id, $status, $appIdValue);
+    $appNameValue = null;
+  } elseif ($hasAppNameColumn) {
+    $stmt->bind_result($user_id, $status, $appNameValue);
+    $appIdValue = null;
+  } else {
+    $stmt->bind_result($user_id, $status);
+    $appIdValue = null;
+    $appNameValue = null;
+  }
   $stmt->fetch();
   $stmt->close();
 
   // Normalize empty values to something readable
   $user_id = isset($user_id) && $user_id !== '' ? $user_id : null;
   $status  = isset($status)  && $status  !== '' ? $status  : null;
+  $appIdValue = isset($appIdValue) && $appIdValue !== '' ? $appIdValue : null;
+  $appNameValue = isset($appNameValue) && $appNameValue !== '' ? $appNameValue : null;
+  $appSlug = null;
+  if ($appIdValue) {
+    $appSlug = fb_app_slug($appIdValue);
+  } elseif ($appSlugParam) {
+    $appSlug = fb_slugify($appSlugParam);
+  } elseif ($appNameValue) {
+    $appSlug = fb_slugify($appNameValue);
+  }
 
   // ---- Optional: try to read timestamps if those columns exist
   $createdAt = null; $updatedAt = null;
@@ -93,7 +170,10 @@ try {
     $out = [
       'confirmation_code' => $id,
       'user_id'           => $user_id,
-      'status'            => $status
+      'status'            => $status,
+      'app_id'            => $appIdValue,
+      'app_name'          => $appNameValue,
+      'app_slug'          => $appSlug
     ];
     if ($createdAt !== null) $out['created_at'] = $createdAt;
     if ($updatedAt !== null) $out['updated_at'] = $updatedAt;
@@ -107,6 +187,17 @@ try {
   <title>Deletion Status</title>
   <h1>Facebook Data Deletion</h1>
   <p><b>Confirmation Code:</b> <?= htmlspecialchars($id, ENT_QUOTES) ?></p>
+  <?php if ($appNameValue !== null || $appIdValue !== null || $appSlug !== null): ?>
+    <p><b>App:</b>
+      <?php if ($appNameValue !== null): ?>
+        <?= htmlspecialchars($appNameValue, ENT_QUOTES) ?>
+        <?php if ($appIdValue !== null): ?> (ID: <?= htmlspecialchars($appIdValue, ENT_QUOTES) ?>)<?php endif; ?>
+      <?php elseif ($appIdValue !== null): ?>
+        <?= htmlspecialchars($appIdValue, ENT_QUOTES) ?>
+      <?php endif; ?>
+      <?php if ($appSlug !== null): ?> [<?= htmlspecialchars($appSlug, ENT_QUOTES) ?>]<?php endif; ?>
+    </p>
+  <?php endif; ?>
   <p><b>User ID:</b> <?= htmlspecialchars($user_id ?? '—', ENT_QUOTES) ?></p>
   <p><b>Status:</b> <?= htmlspecialchars($status ?? '—', ENT_QUOTES) ?></p>
   <?php if ($createdAt !== null): ?>

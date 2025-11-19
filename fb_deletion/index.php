@@ -23,9 +23,28 @@ set_error_handler(function($severity, $message, $file, $line){
   return true;
 });
 
+if (!is_file(__DIR__.'/db.php')) {
+  http_response_code(500);
+  echo json_encode(['error' => 'missing_db_config']);
+  exit;
+}
 require_once __DIR__.'/db.php'; // must exist and connect OK
 
-$APP_SECRET = getenv('FB_APP_SECRET') ?: 'd67c3772d442ad286b47a94e8ac4d70b';
+if (!is_file(__DIR__.'/helpers.php')) {
+  http_response_code(500);
+  echo json_encode(['error' => 'missing_helpers']);
+  exit;
+}
+require_once __DIR__.'/helpers.php';
+
+$appsConfig = fb_apps_config();
+$defaultSecret = getenv('FB_APP_SECRET') ?: 'd67c3772d442ad286b47a94e8ac4d70b';
+$appSlugParam = $_GET['app'] ?? null;
+$requestedAppId = null;
+if ($appSlugParam !== null && $appSlugParam !== '') {
+  $requestedAppId = fb_app_id_from_slug($appSlugParam);
+  if ($requestedAppId === null) $requestedAppId = $appSlugParam;
+}
 
 // Only POST is allowed by Facebook
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -49,20 +68,50 @@ function base64_url_decode(string $input): string {
 
 list($encoded_sig, $payload) = explode('.', $_POST['signed_request'], 2);
 
-// Verify signature
-$expected_sig = hash_hmac('sha256', $payload, $APP_SECRET, true);
+// Parse payload to learn which app sent the request
+$payload_raw = base64_url_decode($payload);
+$data = json_decode($payload_raw, true);
+if (!is_array($data) || ($data['algorithm'] ?? '') !== 'HMAC-SHA256') {
+  http_response_code(400);
+  echo json_encode(['error' => 'invalid_payload']);
+  exit;
+}
+
+$app_id = $data['app_id'] ?? null;
+if (!$app_id) {
+  http_response_code(400);
+  echo json_encode(['error' => 'missing_app_id']);
+  exit;
+}
+
+if ($requestedAppId !== null && $requestedAppId !== $app_id) {
+  http_response_code(400);
+  echo json_encode(['error' => 'app_mismatch']);
+  exit;
+}
+
+$appSettings = $appsConfig[$app_id] ?? null;
+if (!$appSettings) {
+  error_log('[fb_deletion] Unknown app_id: '.$app_id);
+  http_response_code(400);
+  echo json_encode(['error' => 'unknown_app', 'app_id' => $app_id]);
+  exit;
+}
+
+$appSecret = $appSettings['secret'] ?? null;
+if (!$appSecret) {
+  http_response_code(400);
+  echo json_encode(['error' => 'missing_app_secret']);
+  exit;
+}
+$appName = $appSettings['name'] ?? $appSettings['slug'] ?? $app_id;
+
+// Verify signature now that we know which secret to use
+$expected_sig = hash_hmac('sha256', $payload, $appSecret, true);
 $decoded_sig  = base64_url_decode($encoded_sig);
 if (!hash_equals($decoded_sig, $expected_sig)) {
   http_response_code(400);
   echo json_encode(['error' => 'bad_signature']);
-  exit;
-}
-
-// Parse payload
-$data = json_decode(base64_url_decode($payload), true);
-if (!is_array($data) || ($data['algorithm'] ?? '') !== 'HMAC-SHA256') {
-  http_response_code(400);
-  echo json_encode(['error' => 'invalid_payload']);
   exit;
 }
 
@@ -77,13 +126,24 @@ if (!$user_id) {
 $confirmation_code = bin2hex(random_bytes(8));
 
 // Persist request
-$status_url = "https://{$_SERVER['HTTP_HOST']}/fb_deletion/status.php?id=".$confirmation_code;
-
-$stmt = $conn->prepare("INSERT INTO deletion_requests (confirmation_code, user_id, status) VALUES (?, ?, 'queued')");
-if (!$stmt) throw new Exception('Prepare failed: '.$conn->error);
-$stmt->bind_param("ss", $confirmation_code, $user_id);
-if (!$stmt->execute()) throw new Exception('Execute failed: '.$stmt->error);
-$stmt->close();
+$host = $_SERVER['HTTP_HOST'] ?? ($_SERVER['SERVER_NAME'] ?? 'example.com');
+$appSlug = fb_app_slug((string)$app_id);
+$status_url = sprintf(
+  'https://%s/fb_deletion/status.php?app=%s&id=%s',
+  $host,
+  rawurlencode($appSlug),
+  rawurlencode($confirmation_code)
+);
+try {
+  $stmt = $conn->prepare("INSERT INTO deletion_requests (confirmation_code, user_id, app_id, app_name, status) VALUES (?, ?, ?, ?, 'queued')");
+  if (!$stmt) throw new Exception('Prepare failed: '.$conn->error);
+  $stmt->bind_param("ssss", $confirmation_code, $user_id, $app_id, $appName);
+  if (!$stmt->execute()) throw new Exception('Execute failed: '.$stmt->error);
+  $stmt->close();
+} catch (Throwable $e) {
+  error_log('[fb_deletion] Insert failed: '.$e->getMessage());
+  throw $e;
+}
 
 // Kick off deletion (sync demo; replace with background job if needed)
 $upd = $conn->prepare("UPDATE deletion_requests SET status='deleted' WHERE confirmation_code=?");
@@ -94,5 +154,8 @@ $upd->close();
 // Respond per Facebook spec
 echo json_encode([
   'url' => $status_url,
-  'confirmation_code' => $confirmation_code
+  'confirmation_code' => $confirmation_code,
+  'app_id' => $app_id,
+  'app_slug' => $appSlug,
+  'app_name' => $appName
 ]);
